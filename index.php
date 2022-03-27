@@ -1,21 +1,24 @@
 <?php
 
 require_once 'Bicycle.php';
-$bike = new Bicycle('blue');
-var_dump($bike);
-$bike->setCurrentSpeed(15);
-
-echo $bike->forward();
-echo '<br> Vitesse du vélo : ' . $bike->getCurrentSpeed() . 'km/h <br>';
-echo $bike->brake();
-echo '<br> Vitesse du vélo : ' . $bike->getCurrentSpeed() . 'km/h <br>';
-echo $bike->brake();
+$bicycle = new Bicycle('blue', 1);
+var_dump($bicycle);
+echo $bicycle->forward();
 
 require_once 'Car.php';
+var_dump(Car::ALLOWED_ENERGIES);
 $myCar = new Car('red', 5, 'diesel');
+echo $myCar->forward();
 var_dump($myCar);
 
-$myCar->setCurrentSpeed(0);
-echo $myCar->start();
-echo $myCar->forward();
-echo $myCar->brake();
+require_once 'Truck.php';
+$myLovelyTruck = new Truck('blue', 2, 'fuel', 15);
+var_dump($myLovelyTruck);
+
+echo $myLovelyTruck->forward();
+echo $myLovelyTruck->setStockCapacity(2);
+var_dump($myLovelyTruck);
+echo $myLovelyTruck->isFull() . '<br>';
+
+$myLovelyTruck->setStockCapacity(0);
+echo $myLovelyTruck->isFull();
